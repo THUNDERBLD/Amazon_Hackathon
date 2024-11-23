@@ -47,7 +47,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ height: "80px", paddingX: 2 }}>
+    <AppBar position="static" sx={{ height: "80px", paddingX: 2 , width: "full"}}>
       <Toolbar disableGutters>
         {/* Sidebar Button */}
         <TemporaryDrawer />

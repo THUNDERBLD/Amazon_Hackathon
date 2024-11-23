@@ -1,25 +1,121 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Router components
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
-import Dashboard from "./pages/Dashboard.jsx";
-import Docs from "./pages/Docs.jsx";
-import Analytics from "./pages/Analytics.jsx"; // Import the Analytics page
-import Payments from "./pages/Payments.jsx";//importing the payments page 
-import Tracking from "./pages/Tracking.jsx";// Import the Tracking page
-import Agents from ".pages/Agents.jsx"
+import Dashboard from './pages/Dashboard.jsx';
+import Docs from './pages/Docs.jsx';
+import Analytics from './pages/Analytics.jsx';
+import Payments from './pages/Payments.jsx';
+import Tracking from './pages/Tracking.jsx';
+import Agents from './pages/Agents.jsx';
+
+const pageVariants = {
+  initial: { x: '100%', opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: '-100%', opacity: 0 },
+};
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="w-s">
+              <Dashboard />
+
+              </div>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/docs"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <Docs />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <Analytics />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/payments"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <Payments />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/tracking"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <Tracking />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/agents"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <Agents />
+            </motion.div>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   return (
     <Router>
-      {/* Routes for Dashboard, Docs, and Analytics pages */}
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/docs" element={<Docs />} />
-        <Route path="/analytics" element={<Analytics />} /> {/* New Analytics route */}
-        <Route path="/payments" element={<Payments />} /> {/*New payments route */}
-        <Route path="/tracking" element={<Tracking />} /> {/*New Document route */}
-        <Route path="/analytics" element={<Analytics />} /> {/* Analytics route */}
-        <Route path="/agents" element={<Agents />} /> {/* Agents route */}
-      </Routes>
+      <AnimatedRoutes />
     </Router>
   );
 }

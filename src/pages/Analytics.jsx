@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import { Box, Typography } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'; // Importing Recharts components
 import ResponsiveAppBar from "../Components/ResponsiveAppBar.jsx"; // Navbar component
 import Chatbot from "../Components/Chatbot.jsx"; // Chatbot component

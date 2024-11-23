@@ -6,7 +6,9 @@ import Chatbot from "../Components/Chatbot.jsx"; // Import the chatbot component
 function Dashboard() {
   return (
     <>
+    <div className="w-[100%]">
       <ResponsiveAppBar />
+    </div>
 
       {/* Dashboard Heading */}
       <div
@@ -172,6 +174,7 @@ function Dashboard() {
 >
   {["New Shipment", "Upload Docs", "Find Carrier", "Generate Report"].map((title, index) => (
     <div
+    className="my-8"
       key={index}
       style={{
         backgroundColor: "white",
