@@ -2,6 +2,9 @@ import React from "react";
 import ResponsiveAppBar from "../Components/ResponsiveAppBar.jsx"; // Navbar component
 import Chatbot from "../Components/Chatbot.jsx"; // Chatbot component
 import SearchBar from "../Components/Searchbar.jsx"; // Search bar component
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Button, Box, Card, CardContent, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Link } from "react-router-dom";
 
 function Docs() {
   return (
@@ -11,7 +14,7 @@ function Docs() {
       {/* Active Delivery Request Heading */}
       <div
         style={{
-          marginTop: "1rem", // Adjusted for spacing
+          marginTop: "1rem",
           display: "flex",
           justifyContent: "flex-start",
           paddingLeft: "4rem",
@@ -20,16 +23,187 @@ function Docs() {
         <h1 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>Active Delivery Request</h1>
       </div>
 
-      {/* Search Bar */}
+      {/* Search Bar with Filter Function */}
       <div
         style={{
-          marginTop: "1rem", // Adjusted for spacing
+          marginTop: "1rem",
           display: "flex",
           justifyContent: "center",
+          gap: "1rem",
         }}
       >
-        <SearchBar placeholder="Search from your Active Delivery Requests..." />
+        <SearchBar placeholder="Search from your Active Delivery Requests by country or document type..." />
+        
+        {/* Dropdown Filters for Item Type and Country */}
+        <FormControl style={{ minWidth: "150px" }}>
+          <InputLabel>Item Type</InputLabel>
+          <Select label="Item Type">
+            <MenuItem value="Cotton">Cotton</MenuItem>
+            {/* Add other item types as needed */}
+          </Select>
+        </FormControl>
+
+        <FormControl style={{ minWidth: "150px" }}>
+          <InputLabel>Country</InputLabel>
+          <Select label="Country">
+            <MenuItem value="Japan">Japan</MenuItem>
+            <MenuItem value="Australia">Australia</MenuItem>
+            <MenuItem value="Germany">Germany</MenuItem>
+            {/* Add other countries as needed */}
+          </Select>
+        </FormControl>
       </div>
+
+      {/* Card for Recent Order Related Documents */}
+      <Box
+        sx={{
+          marginTop: "2rem",
+          paddingLeft: "4rem",
+          paddingRight: "4rem",
+        }}
+      >
+        <Card sx={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", borderRadius: "8px" }}>
+          <CardContent>
+            <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: "1rem" }}>
+              Recent Order Related Documents
+            </Typography>
+            
+            {/* First Accordion - Cotton (Japan) */}
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  Item Type: Cotton &nbsp;&nbsp; Country: Japan
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1i-xelJMTISIMcEJMBmdtl90qchlcpui1/view?usp=drive_link" target="_blank">
+                      Airway Bill
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1kKnqRGsDSKpqUiDoVQuNiiS3m_igu4Nz/view?usp=drive_link" target="_blank">
+                      Insurance Certificate
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1DLt56AMX-KP_yaORw84f6LUTRArF3RX2/view?usp=drive_link" target="_blank">
+                      Commercial Invoice
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1xKBvNbGQ-mmnMwUNe9TESPURgyrCZ31o/view?usp=drive_link" target="_blank">
+                      Custom Declaration
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1bbbZieQSfj0KbpMvfRI6SG_AvzNiT-U6/view?usp=drive_link" target="_blank">
+                      Export Declaration
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1TwCDMSqS6Hbamd32d1UE-apQZPfm1PCk/view?usp=drive_link" target="_blank">
+                      Packing List
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1MeRKVirv9RlAEjosmAIFz_67yfzyhlTt/view?usp=drive_link" target="_blank">
+                      Proforma Invoice
+                    </Link>
+                  </Button>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+
+            {/* Second Accordion - Cotton (Australia) */}
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  Item Type: Cotton &nbsp;&nbsp; Country: Australia
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
+                      Quality Bill
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1kKnqRGsDSKpqUiDoVQuNiiS3m_igu4Nz/view?usp=drive_link" target="_blank">
+                      Insurance Certificate
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1DLt56AMX-KP_yaORw84f6LUTRArF3RX2/view?usp=drive_link" target="_blank">
+                      Commercial Invoice
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1i-xelJMTISIMcEJMBmdtl90qchlcpui1/view?usp=drive_link" target="_blank">
+                      Airway Bill
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1TwCDMSqS6Hbamd32d1UE-apQZPfm1PCk/view?usp=drive_link" target="_blank">
+                      Packing List
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1bbbZieQSfj0KbpMvfRI6SG_AvzNiT-U6/view?usp=drive_link" target="_blank">
+                      Export Declaration
+                    </Link>
+                  </Button>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+
+            {/* Third Accordion - Cotton (Germany) */}
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  Item Type: Cotton &nbsp;&nbsp; Country: Germany
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
+                      Quality Bill
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1U4y0lTk1KDuDr-e5i61rnm_Y4IW2Pojw/view?usp=drive_link" target="_blank">
+                      Conformance Certificate
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1DLt56AMX-KP_yaORw84f6LUTRArF3RX2/view?usp=drive_link" target="_blank">
+                      Commercial Invoice
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1i-xelJMTISIMcEJMBmdtl90qchlcpui1/view?usp=drive_link" target="_blank">
+                      Airway Bill
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1TwCDMSqS6Hbamd32d1UE-apQZPfm1PCk/view?usp=drive_link" target="_blank">
+                      Packing List
+                    </Link>
+                  </Button>
+                  <Button variant="outlined">
+                    <Link to="https://drive.google.com/file/d/1bbbZieQSfj0KbpMvfRI6SG_AvzNiT-U6/view?usp=drive_link" target="_blank">
+                      Export Declaration
+                    </Link>
+                  </Button>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+          </CardContent>
+        </Card>
+      </Box>
 
       {/* Layout below the search bar */}
       <div
@@ -37,16 +211,16 @@ function Docs() {
           marginTop: "2rem",
           display: "flex",
           justifyContent: "center",
-          gap: "2rem", // Space between the left and right sections
-          padding: "0 4rem", // Padding on the sides
+          gap: "2rem",
+          padding: "0 4rem",
         }}
       >
         {/* Left Section */}
         <div
           style={{
             backgroundColor: "white",
-            width: "55%", // Occupies 45% of the screen width
-            height: "17rem", // Height resembling a credit card
+            width: "55%",
+            height: "17rem",
             borderRadius: "8px",
             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
             display: "flex",
@@ -57,39 +231,15 @@ function Docs() {
           }}
         >
           <div style={{ width: "100%", height: "2rem", marginBottom: "3rem" }}>
-          <SearchBar placeholder="Search for Regulations..." />
+            <SearchBar placeholder="Search for Regulations..." />
           </div>
-          <p
-            style={{
-              marginBottom: "2rem",
-              paddingLeft: "10px",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              color: "#333",
-            }}
-          >
+          <p style={{ marginBottom: "2rem", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
             Hazardous Goods
           </p>
-          <p
-            style={{
-              marginBottom: "2rem",
-              paddingLeft: "10px",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              color: "#333",
-            }}
-          >
-            Banned Comodites
+          <p style={{ marginBottom: "2rem", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
+            Banned Commodities
           </p>
-          <p
-            style={{
-              margin: "0",
-              paddingLeft: "10px",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              color: "#333",
-            }}
-          >
+          <p style={{ margin: "0", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
             International Laws
           </p>
         </div>
@@ -111,18 +261,10 @@ function Docs() {
             }}
           >
             <div style={{ width: "100%", height: "2rem", marginBottom: "2rem" }}>
-            <SearchBar placeholder="Search from your Completed Deliveries..." />
+              <SearchBar placeholder="Search from your Completed Deliveries..." />
             </div>
-            <p
-              style={{
-                margin: "0",
-                paddingLeft: "10px",
-                fontSize: "1rem",
-                fontWeight: "bold",
-                color: "#333",
-              }}
-            >
-              XX Journeys Completed 🎉
+            <p style={{ margin: "0", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
+              View Reports
             </p>
           </div>
 
@@ -140,25 +282,17 @@ function Docs() {
               padding: "0.5rem",
             }}
           >
-            <div style={{ width: "100%", height: "2rem", marginBottom: "2rem" }}>
-            <SearchBar placeholder="Search for Important Links..." />
-            </div>
-            <p
-              style={{
-                margin: "0",
-                paddingLeft: "10px",
-                fontSize: "1rem",
-                fontWeight: "bold",
-                color: "#333",
-              }}
-            >
-              Check Important Updates!
+            <p style={{ marginBottom: "2rem", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
+              Shipment Status
+            </p>
+            <p style={{ margin: "0", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
+              Schedule Meetings
             </p>
           </div>
         </div>
       </div>
 
-      {/* Chatbot in the bottom-right corner */}
+      {/* Chatbot */}
       <Chatbot />
     </>
   );
