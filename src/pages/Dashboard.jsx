@@ -17,8 +17,6 @@ const sampleData = [
 ];
 
 function Dashboard() {
-  const navigate = useNavigate();
-  navigate("/agents")
   return (
     <>
       <div className="w-[100%]">
@@ -280,11 +278,6 @@ function Dashboard() {
     </div>
   ))}
 </div>
-
-
-
-
-
 
 
       {/* Chatbot in the bottom-right corner */}
