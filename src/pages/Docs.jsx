@@ -92,7 +92,7 @@ function Docs() {
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  Item Type: Cotton &nbsp;&nbsp; Country: Japan
+                  Order ID : ORD-20241124-X7K4Q9  ||  Item Type: Cotton &nbsp;&nbsp; Country: Japan   
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
@@ -140,11 +140,11 @@ function Docs() {
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  Item Type: Cotton &nbsp;&nbsp; Country: Australia
+                  Order ID : ORD-20241124-Z8J5M2  ||  Item Type: Cotton &nbsp;&nbsp; Country: Australia
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                   <Button variant="outlined">
                     <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
                       Quality Bill
@@ -183,11 +183,11 @@ function Docs() {
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                  Item Type: Cotton &nbsp;&nbsp; Country: Germany
+                  Order ID : ORD-20241124-L4X9T7  ||  Item Type: Cotton &nbsp;&nbsp; Country: Germany
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                   <Button variant="outlined">
                     <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
                       Quality Bill
@@ -236,33 +236,76 @@ function Docs() {
         }}
       >
         {/* Left Section */}
-        <div
-          style={{
-            backgroundColor: "white",
-            width: "55%",
-            height: "17rem",
-            borderRadius: "8px",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            padding: "0.5rem",
-          }}
-        >
-          <div style={{ width: "100%", height: "2rem", marginBottom: "3rem" }}>
-            <SearchBar placeholder="Search for Regulations..." />
-          </div>
-          <p style={{ marginBottom: "2rem", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
-            Hazardous Goods
-          </p>
-          <p style={{ marginBottom: "2rem", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
-            Banned Commodities
-          </p>
-          <p style={{ margin: "0", paddingLeft: "10px", fontSize: "1rem", fontWeight: "bold", color: "#333" }}>
-            International Laws
-          </p>
-        </div>
+<div
+  style={{
+    backgroundColor: "white",
+    width: "55%",
+    height: "17rem",
+    borderRadius: "8px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    padding: "0.5rem",
+  }}
+>
+  <div style={{ width: "100%", height: "2rem", marginBottom: "3rem" }}>
+    <SearchBar placeholder="Search for Regulations..." />
+  </div>
+  <button
+    onClick={() => window.open("https://custada.in/CUSTADA-Online/document/document/Hazardous_Waste_Rules.htm", "_blank")}
+    style={{
+      marginBottom: "2rem",
+      paddingLeft: "10px",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      color: "#333",
+      backgroundColor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      textAlign: "left",
+      width: "100%",
+    }}
+  >
+    Hazardous Goods
+  </button>
+  <button
+    onClick={() => window.open("https://www.immihelp.com/prohibited-restricted-goods-to-and-from-india/", "_blank")}
+    style={{
+      marginBottom: "2rem",
+      paddingLeft: "10px",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      color: "#333",
+      backgroundColor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      textAlign: "left",
+      width: "100%",
+    }}
+  >
+    Banned Commodities
+  </button>
+  <button
+    onClick={() => window.open("https://www.wto.org/english/res_e/booksp_e/international_exp_regs_e.pdf", "_blank")}
+    style={{
+      margin: "0",
+      paddingLeft: "10px",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      color: "#333",
+      backgroundColor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      textAlign: "left",
+      width: "100%",
+    }}
+  >
+    International Laws
+  </button>
+</div>
+
 
         {/* Right Section */}
         <div style={{ width: "55%", display: "flex", flexDirection: "column", gap: "1rem" }}>

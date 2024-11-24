@@ -1,6 +1,6 @@
 import React from "react";
 import ResponsiveAppBar from "../Components/ResponsiveAppBar.jsx";
-import CardContainer from "../Components/CardContainers.jsx"; // Adjust the path if needed
+import CardContainer from "../Components/CardContainers.jsx"; 
 
 function Dashboard() {
   return (
