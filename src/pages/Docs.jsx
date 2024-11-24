@@ -16,11 +16,31 @@ function Docs() {
         style={{
           marginTop: "1rem",
           display: "flex",
-          justifyContent: "flex-start",
+          justifyContent: "space-between", // Added space between heading and button
           paddingLeft: "4rem",
+          paddingRight: "4rem", // Ensures button stays on the right side
         }}
       >
         <h1 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>Active Delivery Request</h1>
+        
+        {/* Upload Documents Button */}
+        <Button
+          variant="contained"
+          color="primary"
+          component="a"
+          href="https://forms.gle/gZStc6swY7gF5NCL9"
+          target="_blank"
+          style={{
+            backgroundColor: "#3f51b5",
+            color: "#fff",
+            textTransform: "none",
+            fontSize: "1rem",
+            height: "fit-content",
+            alignSelf: "center",
+          }}
+        >
+          Upload Documents
+        </Button>
       </div>
 
       {/* Search Bar with Filter Function */}
