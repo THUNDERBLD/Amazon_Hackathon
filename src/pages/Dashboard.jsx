@@ -251,7 +251,7 @@ function Dashboard() {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        cursor: title === "New Shipment" || title === "Upload Docs" ? "pointer" : "default",
+        cursor: title === "Upload Docs" ? "pointer" : "default",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.boxShadow = "0 6px 15px rgba(0, 0, 0, 0.2)";
@@ -260,19 +260,7 @@ function Dashboard() {
         e.currentTarget.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.1)";
       }}
     >
-      {title === "New Shipment" ? (
-        <Link
-          to="/agents"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
-          {title}
-        </Link>
-      ) : title === "Upload Docs" ? (
+      {title === "Upload Docs" ? (
         <a
           href="https://forms.gle/sYbVFuX58cXyhjSo8"
           target="_blank"
@@ -292,6 +280,7 @@ function Dashboard() {
     </div>
   ))}
 </div>
+
 
 
 

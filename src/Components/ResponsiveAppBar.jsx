@@ -70,7 +70,7 @@ function ResponsiveAppBar() {
             mr: 2,
           }}
         >
-          LOGO
+          AmazTrade-Suite
 
         </Typography>
                 {/* Mobile Menu Icon */}
