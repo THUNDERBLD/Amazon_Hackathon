@@ -280,6 +280,11 @@ function Dashboard() {
 </div>
 
 
+
+
+
+
+
       {/* Chatbot in the bottom-right corner */}
       <Chatbot />
     </>

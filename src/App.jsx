@@ -8,6 +8,7 @@ import Payments from './pages/Payments.jsx';
 import Tracking from './pages/Tracking.jsx';
 import Agents from './pages/Agents.jsx';
 import CarbonQuest from './pages/CarbonQuest.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 
 const pageVariants = {
   initial: { x: '100%', opacity: 0 },
@@ -22,7 +23,7 @@ function AnimatedRoutes() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <motion.div
               initial="initial"
@@ -39,6 +40,20 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <LoginPage />
+            </motion.div>
+          }
+        />
+        <Route 
           path="/docs"
           element={
             <motion.div

@@ -130,7 +130,7 @@ function ResponsiveAppBar() {
                 <Button
                   className="mx-4"
                   component={Link}
-                  to={page === "Dashboard" ? "/" : `/${page.toLowerCase()}`}
+                  to={page === "Dashboard" ? "/dashboard" : `/${page.toLowerCase()}`}
                   sx={{ color: "black" }}
                 >
                   {page}
