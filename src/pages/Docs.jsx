@@ -16,31 +16,11 @@ function Docs() {
         style={{
           marginTop: "1rem",
           display: "flex",
-          justifyContent: "space-between", // Added space between heading and button
+          justifyContent: "flex-start",
           paddingLeft: "4rem",
-          paddingRight: "4rem", // Ensures button stays on the right side
         }}
       >
         <h1 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>Active Delivery Request</h1>
-        
-        {/* Upload Documents Button */}
-        <Button
-          variant="contained"
-          color="primary"
-          component="a"
-          href="https://forms.gle/gZStc6swY7gF5NCL9"
-          target="_blank"
-          style={{
-            backgroundColor: "#3f51b5",
-            color: "#fff",
-            textTransform: "none",
-            fontSize: "1rem",
-            height: "fit-content",
-            alignSelf: "center",
-          }}
-        >
-          Upload Documents
-        </Button>
       </div>
 
       {/* Search Bar with Filter Function */}
@@ -56,22 +36,30 @@ function Docs() {
         
         {/* Dropdown Filters for Item Type and Country */}
         <FormControl style={{ minWidth: "150px" }}>
-          <InputLabel>Item Type</InputLabel>
-          <Select label="Item Type">
-            <MenuItem value="Cotton">Cotton</MenuItem>
-            {/* Add other item types as needed */}
-          </Select>
-        </FormControl>
+    <InputLabel>Item Type</InputLabel>
+    <Select label="Item Type">
+      <MenuItem value="Cotton">Cotton</MenuItem>
+      <MenuItem value="Petroleum">Petroleum</MenuItem>
+      <MenuItem value="Iron and Steel">Iron and Steel</MenuItem>
+      <MenuItem value="Organic Chemicals">Organic Chemicals</MenuItem>
+      {/* Add more item types as needed */}
+    </Select>
+  </FormControl>
 
-        <FormControl style={{ minWidth: "150px" }}>
-          <InputLabel>Country</InputLabel>
-          <Select label="Country">
-            <MenuItem value="Japan">Japan</MenuItem>
-            <MenuItem value="Australia">Australia</MenuItem>
-            <MenuItem value="Germany">Germany</MenuItem>
-            {/* Add other countries as needed */}
-          </Select>
-        </FormControl>
+  <FormControl style={{ minWidth: "150px" }}>
+    <InputLabel>Country</InputLabel>
+    <Select label="Country">
+      <MenuItem value="Japan">Japan</MenuItem>
+      <MenuItem value="Australia">Australia</MenuItem>
+      <MenuItem value="Germany">Germany</MenuItem>
+      <MenuItem value="USA">USA</MenuItem>
+      <MenuItem value="UK">UK</MenuItem>
+      <MenuItem value="Netherlands">Netherlands</MenuItem>
+      <MenuItem value="Brazil">Brazil</MenuItem>
+      <MenuItem value="South Africa">South Africa</MenuItem>
+      {/* Add more countries as needed */}
+    </Select>
+  </FormControl>
       </div>
 
       {/* Card for Recent Order Related Documents */}
@@ -144,7 +132,7 @@ function Docs() {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                   <Button variant="outlined">
                     <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
                       Quality Bill
@@ -187,7 +175,7 @@ function Docs() {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                   <Button variant="outlined">
                     <Link to="https://drive.google.com/file/d/1Uv4RbLumS4hIhKtmeatLjCt0MvYDl7ET/view?usp=drive_link" target="_blank">
                       Quality Bill
