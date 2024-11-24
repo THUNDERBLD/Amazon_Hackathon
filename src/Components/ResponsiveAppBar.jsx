@@ -14,7 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import TemporaryDrawer from "./Sidebar"; // Import Sidebar component
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon for mobile navbar
 
-const pages = ["Dashboard", "Docs", "Agents", "Tracking", "Payments", "Analytics"];
+const pages = ["Dashboard",  "Agents", "Docs", "Payments", "Tracking", "Analytics", ""];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
