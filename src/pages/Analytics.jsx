@@ -1,68 +1,104 @@
 import React from 'react';
 import { Box, Typography, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import { PieChart, Pie, Cell, Tooltip } from 'recharts'; // Importing Recharts components
-import ResponsiveAppBar from "../Components/ResponsiveAppBar.jsx"; // Navbar component
-import Chatbot from "../Components/Chatbot.jsx"; // Chatbot component
+import { PieChart, Pie, Cell, Tooltip, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import ResponsiveAppBar from "../Components/ResponsiveAppBar.jsx";
+import Chatbot from "../Components/Chatbot.jsx";
 
 function Analytics() {
-  const headings = [
-    "Booked",
-    "To be Packed",
-    "Ready to Ship",
-    "Shipped",
-    "Delivered",
-    "Total Sales",
+  // Current metrics data
+  const currentMetrics = {
+    "Booked": 1247,
+    "To be Packed": 326,
+    "Ready to Ship": 158,
+    "Shipped": 892,
+    "Delivered": 3864,
+    "Total Sales": "₹24.8M"
+  };
+
+  // Top 5 products data
+  const topProducts = [
+    { name: "Smartphone X Pro", sales: 458, revenue: "₹6.87M" },
+    { name: "Wireless Earbuds", sales: 312, revenue: "₹1.56M" },
+    { name: "Smart Watch Series 4", sales: 287, revenue: "₹2.87M" },
+    { name: "Laptop Ultra", sales: 245, revenue: "₹7.35M" },
+    { name: "Tablet Mini", sales: 198, revenue: "₹1.98M" }
   ];
 
-  // Sample data for the pie charts (5 partitions)
-  const pieData = [
-    { value: 400 },
-    { value: 300 },
-    { value: 300 },
-    { value: 200 },
-    { value: 500 }, // Added 5th partition
+  // Top 5 categories data
+  const topCategories = [
+    { name: "Electronics", sales: 1842, revenue: "₹18.42M" },
+    { name: "Fashion", sales: 1456, revenue: "₹7.28M" },
+    { name: "Home & Living", sales: 987, revenue: "₹4.94M" },
+    { name: "Books", sales: 765, revenue: "₹1.53M" },
+    { name: "Sports", sales: 654, revenue: "₹3.27M" }
   ];
+
+  // Pie chart data for products
+  const productPieData = [
+    { name: "Smartphone X Pro", value: 458 },
+    { name: "Wireless Earbuds", value: 312 },
+    { name: "Smart Watch Series 4", value: 287 },
+    { name: "Laptop Ultra", value: 245 },
+    { name: "Tablet Mini", value: 198 }
+  ];
+
+  // Pie chart data for categories
+  const categoryPieData = [
+    { name: "Electronics", value: 1842 },
+    { name: "Fashion", value: 1456 },
+    { name: "Home & Living", value: 987 },
+    { name: "Books", value: 765 },
+    { name: "Sports", value: 654 }
+  ];
+
+  // Year wise sales trend data
+  const yearWiseSales = [
+    { year: '2020', sales: 12.4 },
+    { year: '2021', sales: 15.8 },
+    { year: '2022', sales: 19.2 },
+    { year: '2023', sales: 22.6 },
+    { year: '2024', sales: 24.8 }
+  ];
+
+  // Monthly sales trend data
+  const monthlySales = [
+    { month: 'Dec', sales: 2.4 },
+    { month: 'Jan', sales: 2.1 },
+    { month: 'Feb', sales: 2.3 },
+    { month: 'Mar', sales: 2.8 },
+    { month: 'Apr', sales: 2.6 },
+    { month: 'May', sales: 2.9 },
+    { month: 'Jun', sales: 3.1 },
+    { month: 'Jul', sales: 2.8 },
+    { month: 'Aug', sales: 3.2 },
+    { month: 'Sep', sales: 3.4 },
+    { month: 'Oct', sales: 3.6 },
+    { month: 'Nov', sales: 3.8 }
+  ];
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+
   return (
     <>
-      <ResponsiveAppBar /> {/* Navbar */}
+      <ResponsiveAppBar />
 
-      {/* Horizontal Row with 7 Rectangles */}
-      <Box
-        sx={{
+      {/* Metrics Row */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: '2rem', padding: '2rem 0' }}>
+        {/* Year Selector */}
+        <Box sx={{
+          width: '180px',
+          height: '100px',
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
           display: 'flex',
-          justifyContent: 'center',
-          gap: '2rem',
-          padding: '2rem 0',
-        }}
-      >
-        {/* First Rectangle with Divided Sections */}
-        <Box
-          sx={{
-            width: '180px',
-            height: '100px',
-            backgroundColor: 'primary.main', // Default Material UI Blue
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: '0.5rem',
-          }}
-        >
-          {/* Top Part: Sales Review */}
-          <Typography
-            variant="h6"
-            sx={{
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              fontWeight: 'bold',
-              color: 'white', // White text on blue background
-            }}
-          >
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '0.5rem',
+        }}>
+          <Typography variant="h6" sx={{ textAlign: 'center', fontSize: '0.875rem', fontWeight: 'bold', color: 'white' }}>
             Sales Review
           </Typography>
-
-          {/* Bottom Part: Dropdown Menu */}
           <FormControl fullWidth>
             <InputLabel id="year-select-label" sx={{ color: 'white' }}>Select Year</InputLabel>
             <Select
@@ -71,10 +107,8 @@ function Analytics() {
               defaultValue={2024}
               size="small"
               sx={{
-                color: 'white', // White text on the select menu
-                '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'white', // White border for the dropdown
-                },
+                color: 'white',
+                '.MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
               }}
             >
               <MenuItem value={2024}>2024</MenuItem>
@@ -84,377 +118,230 @@ function Analytics() {
           </FormControl>
         </Box>
 
-        {/* Other Rectangles */}
-        {headings.map((heading, index) => (
-          <Box
-            key={index}
-            sx={{
-              width: '180px',
-              height: '100px',
-              backgroundColor: 'primary.main', // Default Material UI Blue
-              borderRadius: '8px',
-              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-              position: 'relative',
-            }}
-          >
-            {/* Empty content for placeholders */}
-                        {/* Heading at the Top Center */}
-                        <Typography
-              variant="h6"
-              sx={{
-                position: 'absolute',
-                top: '10px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                fontSize: '0.75rem', // Adjusted font size
-                fontWeight: 'bold',
-                color: 'white',
-                textAlign: 'center',
-                whiteSpace: 'normal', // Allow text to wrap
-                wordWrap: 'break-word', // Enable wrapping of long words
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
+        {/* Metric Cards */}
+        {Object.entries(currentMetrics).map(([heading, value], index) => (
+          <Box key={index} sx={{
+            width: '180px',
+            height: '100px',
+            backgroundColor: 'primary.main',
+            borderRadius: '8px',
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            <Typography sx={{
+              fontSize: '0.75rem',
+              fontWeight: 'bold',
+              color: 'white',
+              textAlign: 'center',
+              marginBottom: '0.5rem',
+            }}>
               {heading}
             </Typography>
-
-            {/* Placeholder Text at the Center */}
-            <Typography
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                fontSize: '0.875rem',
-                fontWeight: 'light',
-                color: 'rgba(255, 255, 255, 0.7)',
-              }}
-            >
-              [Data]
+            <Typography sx={{
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              color: 'white',
+            }}>
+              {value}
             </Typography>
-
           </Box>
         ))}
       </Box>
 
-      {/* Bottom Row of 4 Rectangles Below */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          gap: '2rem',
-          padding: '2rem 0',
-          height: 'calc(100vh - 380px)',
-        }}
-      >
-        {/* First Two Rectangles with Headings */}
-        <Box
-          sx={{
-            width: '790px',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          {/* Heading for Top 5 Category */}
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '90%',
-            }}
-          >
+      {/* Middle Section */}
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        gap: '2rem',
+        padding: '2rem 0',
+        minHeight: '300px', // Adjusted height
+      }}>
+        {/* Top Products Table */}
+        <Box sx={{
+          width: '790px',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
+          color: 'white',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
             Top 5 Product Performance
           </Typography>
-          {/* Placeholder Text or Data */}
-          <Typography
-            sx={{
-              fontSize: '1rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Tabular Data]
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {topProducts.map((product, index) => (
+              <Box key={index} sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '0.5rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '4px',
+              }}>
+                <Typography sx={{ flex: 2 }}>{product.name}</Typography>
+                <Typography sx={{ flex: 1, textAlign: 'right' }}>{product.sales} units</Typography>
+                <Typography sx={{ flex: 1, textAlign: 'right' }}>{product.revenue}</Typography>
+              </Box>
+            ))}
+          </Box>
         </Box>
 
-        <Box
-          sx={{
-            width: '790px',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          {/* Heading for Performance */}
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '100%',
-            }}
-          >
+        {/* Top Categories Table */}
+        <Box sx={{
+          width: '790px',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
+          color: 'white',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '1rem' }}>
             Top 5 Category Performance
           </Typography>
-          {/* Placeholder Text or Data */}
-          <Typography
-            sx={{
-              fontSize: '1rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Tabular Data]
-          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {topCategories.map((category, index) => (
+              <Box key={index} sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '0.5rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '4px',
+              }}>
+                <Typography sx={{ flex: 2 }}>{category.name}</Typography>
+                <Typography sx={{ flex: 1, textAlign: 'right' }}>{category.sales} units</Typography>
+                <Typography sx={{ flex: 1, textAlign: 'right' }}>{category.revenue}</Typography>
+              </Box>
+            ))}
+          </Box>
         </Box>
 
-        {/* Last Two Rectangles with Pie Charts */}
-        <Box
-          sx={{
-            width: '380px',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          {/* Heading for Top 5 Product Performance */}
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '90%',
-            }}
-          >
-            Top 5 Product Performance
+        {/* Pie Charts */}
+        <Box sx={{
+          width: '380px',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem' }}>
+            Top 5 Product Distribution
           </Typography>
-          {/* Pie Chart */}
-          <PieChart width={150} height={150}>
+          <PieChart width={300} height={250}> {/* Increased chart size */}
             <Pie
-              data={pieData}
+              data={productPieData}
               dataKey="value"
-              outerRadius={50}
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={100} // Increased radius
               fill="#8884d8"
-              label={false}
             >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`} />
+              {productPieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
             <Tooltip />
+            <Legend layout="vertical" align="right" verticalAlign="middle" />
           </PieChart>
-          <Typography
-            sx={{
-              position: 'absolute',
-              bottom: '0px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.875rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Data]
-          </Typography>
         </Box>
 
-        <Box
-          sx={{
-            width: '380px',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          {/* Heading for Top 5 Category Performance */}
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '90%',
-            }}
-          >
-            Top 5 Category Performance
-          </Typography>
-          {/* Pie Chart */}
-          <PieChart width={150} height={150}>
-            <Pie
-              data={pieData}
-              dataKey="value"
-              outerRadius={50}
-              fill="#82ca9d"
-              label={false}
-            >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={`#${Math.floor(Math.random() * 16777215).toString(16)}`} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-          <Typography
-            sx={{
-              position: 'absolute',
-              bottom: '0px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.875rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Data]
-          </Typography>
-        </Box>
-      </Box>
-
-      {/* Space between Bottom Row and Last Section */}
-      <Box sx={{ paddingBottom: '2rem' }} />
-
-      {/* Last Row: Year Wise and Last 12 Months Sales Trend */}
-      <Box
-        sx={{
+        <Box sx={{
+          width: '380px',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
           display: 'flex',
-          justifyContent: 'space-between',
-          gap: '2rem',
-          paddingTop: '8rem',
-        }}
-      >
-        {/* First Rectangle: Year Wise Sales Trend */}
-        <Box
-          sx={{
-            width: '50%',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '90%',
-            }}
-          >
-            Year Wise Sales Trend
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem' }}>
+            Category Distribution
           </Typography>
-          <Typography
-            sx={{
-              fontSize: '1rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Graph]
-          </Typography>
-        </Box>
-
-        {/* Second Rectangle: Last 12 Months Sales Trend */}
-        <Box
-          sx={{
-            width: '50%',
-            height: '250px',
-            backgroundColor: 'primary.main',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'relative',
-          }}
-        >
-          <Typography
-            sx={{
-              position: 'absolute',
-              top: '10px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
-              color: 'white',
-              textAlign: 'center',
-              maxWidth: '90%',
-            }}
-          >
-            Last 12 Months Sales Trend
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: '1rem',
-              fontWeight: 'light',
-              color: 'rgba(255, 255, 255, 0.7)',
-            }}
-          >
-            [Graph]
-          </Typography>
+          <PieChart width={300} height={250}> {/* Increased chart size */}
+            <Pie
+              data={categoryPieData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={100} // Increased radius
+              fill="#82ca9d"
+            >
+              {categoryPieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend layout="vertical" align="right" verticalAlign="middle" />
+          </PieChart>
         </Box>
       </Box>
 
-      {/* Add chatbot at the bottom */}
+      {/* Bottom Charts */}
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        gap: '2rem',
+        paddingTop: '2rem', // Reduced padding
+        marginBottom: '2rem', // Added margin bottom
+      }}>
+        {/* Year Wise Trend */}
+        <Box sx={{
+          width: '50%',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem' }}>
+            Year Wise Sales Trend (in ₹B)
+          </Typography>
+          <ResponsiveContainer width="100%" height="85%">
+            <LineChart data={yearWiseSales}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="year" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="sales" stroke="#8884d8" activeDot={{ r: 8 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        </Box>
+
+        {/* Monthly Trend */}
+        <Box sx={{
+          width: '50%',
+          height: '300px', // Increased height
+          backgroundColor: 'primary.main',
+          borderRadius: '8px',
+          padding: '1rem',
+        }}>
+          <Typography sx={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'white', marginBottom: '1rem' }}>
+            Last 12 Months Sales Trend (in ₹B)
+          </Typography>
+          <ResponsiveContainer width="100%" height="85%">
+            <LineChart data={monthlySales}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="sales" stroke="#82ca9d" activeDot={{ r: 8 }} />
+            </LineChart>
+          </ResponsiveContainer>
+        </Box>
+      </Box>
+
       <Chatbot />
     </>
   );
 }
 
 export default Analytics;
-
