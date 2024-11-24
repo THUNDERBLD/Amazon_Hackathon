@@ -97,7 +97,7 @@ function ResponsiveAppBar() {
             <Button
               key={page}
               component={Link}
-              to={page === "Dashboard" ? "/" : `/${page.toLowerCase()}`}
+              to={page === "Dashboard" ? "/dashboard" : `/${page.toLowerCase()}`}
               sx={{
                 my: 2,
                 mx: 2,

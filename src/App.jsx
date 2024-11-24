@@ -9,6 +9,7 @@ import Tracking from './pages/Tracking.jsx';
 import Agents from './pages/Agents.jsx';
 import CarbonQuest from './pages/CarbonQuest.jsx';
 import LoginPage from './pages/LoginPage.jsx';
+import ChatInterface from './pages/ChatInterface.jsx';
 
 const pageVariants = {
   initial: { x: '100%', opacity: 0 },
@@ -106,6 +107,20 @@ function AnimatedRoutes() {
               transition={{ duration: 0.5 }}
             >
               <Tracking />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/chatinterface"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <ChatInterface />
             </motion.div>
           }
         />
