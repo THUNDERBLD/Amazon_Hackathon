@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link for routing
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -8,19 +9,37 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import TemporaryDrawer from "./Sidebar"; // Import Sidebar component
-import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon for mobile navbar
+import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Dashboard", "Docs", "Agents", "Tracking", "Payments", "Analytics"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+function ResponsiveAppBar(props) {
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
 
 
   const handleOpenNavMenu = (event) => {
@@ -37,14 +56,14 @@ function ResponsiveAppBar() {
     setMobileMenuOpen(false);
   };
 
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-
-  // };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const goToLogin = () => {
+    setIsLoggedIn(true)
+    navigate('/login');
+  }
 
   return (
     <AppBar position="static" sx={{ height: "80px", paddingX: 2 , width: "full"}}>
@@ -138,8 +157,9 @@ function ResponsiveAppBar() {
           </Menu>
         )}
 
-        {/* User Avatar */}
-        <Box sx={{ flexGrow: 0, ml: 2 }}>
+        {/* User Avatar or Login button*/}
+        {isLoggedIn ? (
+          <Box sx={{ flexGrow: 0, ml: 2 }}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
@@ -168,6 +188,13 @@ function ResponsiveAppBar() {
             ))}
           </Menu>
         </Box>
+        ) : (
+          <div onClick={goToLogin} className="bg-white rounded-lg">
+              <Button  className="bg-white rounded-lg">
+                  Login
+              </Button>
+          </div>
+      )}
       </Toolbar>
     </AppBar>
   );
