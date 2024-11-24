@@ -7,6 +7,7 @@ import Analytics from './pages/Analytics.jsx';
 import Payments from './pages/Payments.jsx';
 import Tracking from './pages/Tracking.jsx';
 import Agents from './pages/Agents.jsx';
+import CarbonQuest from './pages/CarbonQuest.jsx';
 
 const pageVariants = {
   initial: { x: '100%', opacity: 0 },
@@ -104,6 +105,20 @@ function AnimatedRoutes() {
               transition={{ duration: 0.5 }}
             >
               <Agents />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/carbonquest"
+          element={
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <CarbonQuest />
             </motion.div>
           }
         />

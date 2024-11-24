@@ -14,7 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import TemporaryDrawer from "./Sidebar"; // Import Sidebar component
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon for mobile navbar
 
-const pages = ["Dashboard",  "Agents", "Docs", "Payments", "Tracking", "Analytics", ""];
+const pages = ["Dashboard",  "Agents", "Docs", "Payments", "Tracking", "Analytics", "carbonquest"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -126,13 +126,16 @@ function ResponsiveAppBar() {
           >
             {pages.map((page) => (
               <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <div className="">
                 <Button
+                  className="mx-4"
                   component={Link}
                   to={page === "Dashboard" ? "/" : `/${page.toLowerCase()}`}
                   sx={{ color: "black" }}
                 >
                   {page}
                 </Button>
+                </div>
               </MenuItem>
             ))}
           </Menu>
