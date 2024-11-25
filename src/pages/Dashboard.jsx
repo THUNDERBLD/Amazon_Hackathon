@@ -44,6 +44,7 @@ function Dashboard() {
           justifyContent: "space-around",
           gap: "2rem",
           flexWrap: "wrap",
+          color : "#000000"
         }}
       >
         {["Active Shipments", "Pending Documents", "Available Carriers", "Monthly Revenue"].map(

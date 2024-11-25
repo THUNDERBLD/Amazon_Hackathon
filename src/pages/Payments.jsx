@@ -63,21 +63,22 @@ function Dashboard() {
       <div className="mt-6 flex justify-between items-center px-16">
         <h1 className="text-xl font-bold">Payments</h1>
         <div className="flex gap-4">
-          {currentRates.map((rate) => (
-            <div key={rate.currency} className="flex items-center gap-2 bg-white p-2 rounded-lg shadow">
-              <span className="font-semibold">{rate.currency}/INR:</span>
-              <span>{rate.rate}</span>
-              <span className={`flex items-center ${rate.isUp ? 'text-green-500' : 'text-red-500'}`}>
-                {rate.isUp ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
-                {Math.abs(rate.trend)}%
-              </span>
-            </div>
-          ))}
+        {currentRates.map((rate) => (
+  <div key={rate.currency} className="flex items-center gap-2 bg-white p-2 rounded-lg shadow">
+    <span className="font-semibold text-black">{rate.currency}/INR:</span>
+    <span className="text-black">{rate.rate}</span>
+    <span className={`flex items-center ${rate.isUp ? 'text-green-500' : 'text-red-500'}`}>
+      {rate.isUp ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+      {Math.abs(rate.trend)}%
+    </span>
+  </div>
+))}
+
         </div>
       </div>
 
       {/* Card Container Section */}
-      <div className="mt-8 px-16">
+      <div className="mt-8 px-16 ">
         <CardContainer />
       </div>
 

@@ -82,6 +82,21 @@ function LoginPage() {
                   Login
                 </Button>
               </Box>
+              <div className='shadow-md py-2 mt-4 border'>
+              <div className='flex justify-center mx-4 text-center'>
+                  <span>Registration also works but for best user experience the uesrname and password is given below.</span>
+                </div>
+                <div className='flex gap-2 justify-center mt-3'>
+                  <span>Username</span>
+                  <span>:</span>
+                  <span>user</span>
+                </div>
+                <div className='flex gap-2 justify-center'>
+                  <span>Password</span>
+                  <span>:</span>
+                  <span>password123</span>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </Grid>
