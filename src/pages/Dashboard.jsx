@@ -232,6 +232,7 @@ function Dashboard() {
     justifyContent: "center",
     gap: "1.5rem",
     flexWrap: "wrap",
+    color : "#000000"
   }}
 >
   {["New Shipment", "Upload Docs", "Find Carrier", "Generate Report"].map((title, index) => (
