@@ -271,8 +271,8 @@ const Dashboard = () => {
   const deliveries = [
     {
       id: 1,
-      orderNumber: "ORD12345",
-      currentLocation: "Berlin",
+      orderNumber: "ORD-20241124-X7K4Q9",
+      currentLocation: "Japan",
       estimatedDeliveryTime: "2024-12-01",
       delayStatus: "Delayed",
       status: "In Transit",
@@ -280,7 +280,7 @@ const Dashboard = () => {
     },
     {
       id: 2,
-      orderNumber: "ORD67890",
+      orderNumber: "ORD-20241124-Z8J5M2",
       currentLocation: "Munich",
       estimatedDeliveryTime: "2024-12-05",
       delayStatus: "",
@@ -433,6 +433,7 @@ const Dashboard = () => {
   };
 
   return (
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
     <div className="min-h-screen bg-gray-50">
       <ResponsiveAppBar />
 
@@ -475,6 +476,7 @@ const Dashboard = () => {
           <ExceptionsCard exceptions={exceptions} />
         </div>
       </div>
+    </div>
     </div>
   );
 };

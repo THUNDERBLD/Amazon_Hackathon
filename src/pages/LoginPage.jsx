@@ -35,6 +35,7 @@ function LoginPage() {
   };
 
   return (
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Grid container spacing={3}>
         {/* Login Card */}
@@ -221,6 +222,7 @@ function LoginPage() {
         </Grid>
       </Grid>
     </Container>
+    </div>
   );
 }
 

@@ -56,6 +56,7 @@ function Dashboard() {
 
   return (
     <>
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
       <ResponsiveAppBar />
 
       {/* Dashboard Heading */}
@@ -123,6 +124,7 @@ function Dashboard() {
             </Card>
           ))}
         </div>
+      </div>
       </div>
     </>
   );

@@ -19,6 +19,7 @@ const sampleData = [
 function Dashboard() {
   return (
     <>
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
       <div className="w-[100%]">
         <ResponsiveAppBar />
       </div>
@@ -287,6 +288,7 @@ function Dashboard() {
 
       {/* Chatbot in the bottom-right corner */}
       <Chatbot />
+      </div>
     </>
   );
 }
