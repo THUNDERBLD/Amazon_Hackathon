@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
   Card, 
   CardContent, 
@@ -66,6 +67,11 @@ function LoginPage() {
                     {error}
                   </Typography>
                 )}
+                <div className="underline text-blue-500 mt-2">
+                  <Link className='flex justify-center hover:text-blue-700' to="/register">
+                    Create Account
+                  </Link>
+                </div>
                 <Button
                   fullWidth
                   variant="contained"
