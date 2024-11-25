@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 function Docs() {
   return (
     <>
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
       <ResponsiveAppBar /> {/* Navbar */}
 
       {/* Active Delivery Request Heading */}
@@ -357,6 +358,7 @@ function Docs() {
 
       {/* Chatbot */}
       <Chatbot />
+      </div>
     </>
   );
 }

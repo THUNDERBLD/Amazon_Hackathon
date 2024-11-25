@@ -80,6 +80,7 @@ function Analytics() {
 
   return (
     <>
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
       <ResponsiveAppBar />
 
       {/* Metrics Row */}
@@ -340,6 +341,7 @@ function Analytics() {
       </Box>
 
       <Chatbot />
+      </div>
     </>
   );
 }

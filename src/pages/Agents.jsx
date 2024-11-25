@@ -124,6 +124,7 @@ const Agents = () => {
   };
 
   return (
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
     <div>
       <ResponsiveAppBar />
       <div style={{
@@ -131,6 +132,7 @@ const Agents = () => {
         marginTop: "30px",
         fontSize: "24px",
         fontWeight: "bold",
+        color : "#000000",
       }}>
         Millions of Vendors at One Simple Search
       </div>
@@ -431,6 +433,7 @@ const Agents = () => {
       )}
 
       <Chatbot />
+    </div>
     </div>
   );
 };

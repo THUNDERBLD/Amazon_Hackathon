@@ -63,6 +63,7 @@ const ChatInterface = () => {
   };
 
   return (
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
     <div className="flex items-center justify-center bg-gray-100 h-screen">
       <div className="w-full max-w-2xl bg-white rounded-xl shadow-lg">
         {/* Header */}
@@ -175,6 +176,7 @@ const ChatInterface = () => {
           </div>
         </Card>
       </div>
+    </div>
     </div>
   );
 };
