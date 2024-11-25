@@ -138,7 +138,7 @@ const Agents = () => {
       </div>
 
       {/* Interactive Form */}
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", color : "#000000", }}>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -218,7 +218,7 @@ const Agents = () => {
             style={commonStyle}
           >
             <option value="" disabled>Select category...</option>
-            <option value="Electronics">Electronics</option>
+            <option value="Electronics">Cotton</option>
             <option value="Automotive">Automotive</option>
             <option value="Furniture">Furniture</option>
             <option value="Textiles">Textiles</option>
@@ -263,6 +263,7 @@ const Agents = () => {
             marginTop: "40px",
             fontSize: "20px",
             fontWeight: "bold",
+            color : "#000000",
           }}>
             Available Vendors
           </div>
@@ -277,6 +278,7 @@ const Agents = () => {
             borderRadius: "8px",
             borderCollapse: "collapse",
             marginTop: "20px",
+            color : "#000000",
           }}>
     <thead>
       <tr>
@@ -337,16 +339,17 @@ const Agents = () => {
             style={{
               padding: "12px 16px", 
               borderBottom: "1px solid #ddd", 
-              cursor: "pointer"
+              cursor: "pointer",
+              color : "#000000",
             }}
             onClick={() => openPopup(vendor)}
           >
             {vendor.name}
           </td>
-          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd" }}>{vendor.rating} ⭐</td>
-          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd" }}>{vendor.price}</td>
-          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd" }}>{vendor.deliveryDays} days</td>
-          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd" }}>{vendor.success}</td>
+          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd", color : "#000000", }}>{vendor.rating} ⭐</td>
+          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd", color : "#000000", }}>{vendor.price}</td>
+          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd", color : "#000000", }}>{vendor.deliveryDays} days</td>
+          <td style={{ padding: "12px 16px", borderBottom: "1px solid #ddd", color : "#000000", }}>{vendor.success}</td>
           <td style={{
                 padding: "12px 8px",
                 borderBottom: "1px solid #ddd",
@@ -392,6 +395,7 @@ const Agents = () => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: "1000",
+            color : "#000000",
           }}
           onClick={closePopup}
         >
@@ -402,11 +406,12 @@ const Agents = () => {
               borderRadius: "8px",
               padding: "20px",
               boxSizing: "border-box",
+              color : "#000000",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2>{selectedVendor.name}</h2>
-            <div style={{ marginTop: "20px" }}>
+            <h2 style={{color : "#000000",}}>{selectedVendor.name}</h2>
+            <div style={{ marginTop: "20px", color : "#000000", }}>
               <p><strong>Rating:</strong> {selectedVendor.rating} ⭐</p>
               <p><strong>Price:</strong> {selectedVendor.price}</p>
               <p><strong>Delivery Time:</strong> {selectedVendor.deliveryDays} days</p>

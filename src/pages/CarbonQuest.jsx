@@ -64,8 +64,8 @@ function CarbonQuest() {
   ];
 
   return (
-    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh", color: "#ffffff" }}>
-    <div className="min-h-screen bg-gray-50">
+    <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#f2f2f2" }}>
       <ResponsiveAppBar />
 
       <div className="px-6 py-4">
