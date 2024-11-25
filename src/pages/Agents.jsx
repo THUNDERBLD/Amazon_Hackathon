@@ -350,10 +350,12 @@ const Agents = () => {
                 borderBottom: "1px solid #ddd",
                 textAlign: "center"
               }}>
-            <button type="button"
-              className="bg-blue-500 px-4 py-2 rounded-lg text-white">
-              Select
-            </button>
+            <a href="https://docs.google.com/document/d/1hrFAx6PLsgVjj7A5FMStQiaFuG7sOUxlomJ0GBso5P0/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+  <button type="button" className="bg-blue-500 px-4 py-2 rounded-lg text-white">
+    Select
+  </button>
+</a>
+
             <button type="button"
               className="bg-blue-500 mx-2 translate-y-1 px-4 py-2 rounded-lg text-white">
                 <Link to="/chatinterface">
